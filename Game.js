@@ -21,4 +21,18 @@ function SetImg(e){
     }  
 
 }
+function Reset(){
+   var Parents= document.getElementsByTagName("td");
+//    var Children= document.getElementsByTagName("img");
+    for(var i =0;i<=8;i++){
+        var child = Parents[i].lastElementChild; 
+        while (child) {
+            Parents[i].removeChild(child);
+            child = Parents[i].lastElementChild;
+   }
+   GameArray=[0,0,0,0,0,0,0,0,0];
+   Turn="playerA";
+}
+}
+
 
