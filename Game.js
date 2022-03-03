@@ -22,17 +22,40 @@ function SetImg(e){
 
 }
 function Reset(){
-   var Parents= document.getElementsByTagName("td");
-//    var Children= document.getElementsByTagName("img");
-    for(var i =0;i<=8;i++){
-        var child = Parents[i].lastElementChild; 
-        while (child) {
-            Parents[i].removeChild(child);
-            child = Parents[i].lastElementChild;
-   }
-   GameArray=[0,0,0,0,0,0,0,0,0];
-   Turn="playerA";
+//-----------------------------------------------------------
+//first method wich is not working
+   var Children= document.getElementsByTagName("img");
+   for(var i =0;i<Children.length;i++){
+    var Parent=Children[i].parentNode ; 
+    Parent.removeChild(Children[i]);     
+  }
+//------------------------------------------------------------
+//second method working
+  // var Parents= document.getElementsByTagName("td");
+  //     for(var i =0;i<=Parents.length;i++){
+  //         var child = Parents[i].lastElementChild; 
+  //         while (child) {
+  //             Parents[i].removeChild(child);
+  //             child = Parents[i].lastElementChild;
+  //    }
+  //  GameArray=[0,0,0,0,0,0,0,0,0];
+  //  Turn="playerA";
+//-----------------------------------------------------------
+//third method working
+    /*for(var i=0;i<GameArray.length;i++){
+      if(GameArray[i]!=0){
+        var ParentID=""+(1+i);
+        var Parent=document.getElementById(ParentID);  
+        while (Parent.hasChildNodes()) {
+          Parent.removeChild(Parent.firstChild);
+          GameArray[i]=0;
+        }
+      }
+    }
+    Turn="playerA";*/
+//------------------------------------------------------------
+
 }
-}
+
 
 
