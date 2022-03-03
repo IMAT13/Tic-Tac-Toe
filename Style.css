@@ -38,8 +38,11 @@ table td {
 table td:first-child {
     border-left: none;
 }
+table tr:last-child td{
+    border-bottom: none !important;
+}
 .information{
     width: 90%;
     height: 100px;
-    background-color: aliceblue  
+    margin-top: 20px; 
 }
