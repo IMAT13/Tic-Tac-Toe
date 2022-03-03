@@ -69,13 +69,16 @@ function Reset(){
 function GameCheck(player){
   if(player=="playerA"){
     for(var j=0;j<Win_Array.length;j++){
-    if(Win_Array[j].every(SelectedIndexes => A_Array.includes(SelectedIndexes))){alert("Plyer A Won");Reset();} 
+    if(Win_Array[j].every(SelectedIndexes => A_Array.includes(SelectedIndexes))){alert("Plyer A Won");Reset();A_Array=[];B_Array=[]} 
+    else if(!GameArray.includes(0)){alert("Draw!!!");Reset();A_Array=[];B_Array=[]}
     }
   }
-  if(player=="playerB"){
+  else if(player=="playerB"){
       for(var j=0;j<Win_Array.length;j++){
-      if(Win_Array[j].every(SelectedIndexes => B_Array.includes(SelectedIndexes))){ alert("Plyer B Won");Reset();}
+      if(Win_Array[j].every(SelectedIndexes => B_Array.includes(SelectedIndexes))){ alert("Plyer B Won");Reset();A_Array=[];B_Array=[]}
+      else if(!GameArray.includes(0)){alert("Draw!!!");Reset();A_Array=[];B_Array=[]}
       }  
   }
+  
 
 }

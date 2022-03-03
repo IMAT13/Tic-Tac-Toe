@@ -39,10 +39,10 @@ table td:first-child {
     border-left: none;
 }
 table tr:last-child td{
-    border-bottom: none !important;
+    border-bottom: none;
 }
 .information{
     width: 90%;
     height: 100px;
-    margin-top: 20px; 
+    margin-top: 15px; 
 }
