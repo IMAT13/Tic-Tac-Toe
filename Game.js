@@ -23,11 +23,12 @@ function SetImg(e){
 }
 function Reset(){
 //-----------------------------------------------------------
-//first method wich is not working
+//first method working
    var Children= document.getElementsByTagName("img");
    for(var i =0;i<Children.length;i++){
     var Parent=Children[i].parentNode ; 
-    Parent.removeChild(Children[i]);     
+    Parent.removeChild(Children[i]);  
+    i--;  
   }
 //------------------------------------------------------------
 //second method working
