@@ -11,7 +11,7 @@ function SetImg(e){
     if(GameArray[TDNum]==0){
       if(Turn=="playerA"){
         var TDimg =document.createElement("img") ;
-        TDimg.src="circle.png";
+        TDimg.src="multiply.png";
         TagetTD.appendChild(TDimg);
         GameArray[TDNum]=1;
         A_Array.push(eval(TDimg.parentNode.id)-1);
@@ -20,7 +20,7 @@ function SetImg(e){
       }  
       else if(Turn=="playerB"){
         var TDimg =document.createElement("img") ;
-        TDimg.src="multiply.png";
+        TDimg.src="circle.png";
         TagetTD.appendChild(TDimg);
         GameArray[TDNum]=2;
         B_Array.push(eval(TDimg.parentNode.id)-1);
@@ -28,7 +28,7 @@ function SetImg(e){
         Turn="playerA";
       }
     }  
-
+    ShowTurn();
 }
 function ResetBoard(){
 //-----------------------------------------------------------
@@ -81,6 +81,22 @@ function Reset(){
     GameArray=[0,0,0,0,0,0,0,0,0];
     Turn="playerA";
 }
+
+function ShowTurn(){
+  if(Turn=="playerA"){
+    document.getElementById("player_A").style.textDecoration ="underline";
+    document.getElementById("player_B").style.textDecoration ="none";
+  }
+  else{
+    document.getElementById("player_B").style.textDecoration ="underline";
+    document.getElementById("player_A").style.textDecoration ="none";
+  }
+}
+
+
+
+
+
 function GameCheck(player){
   if(player=="playerA"){
     for(var j=0;j<Win_Array.length;j++){
