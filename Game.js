@@ -3,6 +3,8 @@ var GameArray=new Array(0,0,0,0,0,0,0,0,0);//0 for not selected , 1 for player 1
 var A_Array=new Array;//Array of select indexes by player A
 var B_Array=new Array;//Array of select indexes by player B
 var Win_Array=new Array([0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]);
+var A_Wins=0;
+var B_Wins=0;
 function SetImg(e){
     var TagetTD=e.srcElement;
     var TDNum=(eval(TagetTD.id)-1);
@@ -28,7 +30,7 @@ function SetImg(e){
     }  
 
 }
-function Reset(){
+function ResetBoard(){
 //-----------------------------------------------------------
 //first method working
   var Children= document.getElementsByTagName("img");
@@ -36,7 +38,7 @@ function Reset(){
     var Parent=Children[i].parentNode ; 
     Parent.removeChild(Children[i]);  
     i--;  
-  }
+  } 
   GameArray=[0,0,0,0,0,0,0,0,0];
   Turn="playerA";
 //------------------------------------------------------------
@@ -64,19 +66,38 @@ function Reset(){
     }
     Turn="playerA";*/
 //------------------------------------------------------------
-
+}
+function Reset(){
+    var Children= document.getElementsByTagName("img");
+    for(var i =0;i<Children.length;i++){
+      var Parent=Children[i].parentNode ; 
+      Parent.removeChild(Children[i]);  
+      i--;  
+    }
+    A_Wins=0;
+    document.getElementById("A_Wins").innerText=A_Wins; 
+    B_Wins=0;
+    document.getElementById("B_Wins").innerText=B_Wins; 
+    GameArray=[0,0,0,0,0,0,0,0,0];
+    Turn="playerA";
 }
 function GameCheck(player){
   if(player=="playerA"){
     for(var j=0;j<Win_Array.length;j++){
-    if(Win_Array[j].every(SelectedIndexes => A_Array.includes(SelectedIndexes))){alert("Plyer A Won");Reset();A_Array=[];B_Array=[]} 
-    else if(!GameArray.includes(0)){alert("Draw!!!");Reset();A_Array=[];B_Array=[]}
+    if(Win_Array[j].every(SelectedIndexes => A_Array.includes(SelectedIndexes))){alert("Plyer A Won");ResetBoard();A_Array=[];B_Array=[];
+    A_Wins++;
+    document.getElementById("A_Wins").innerText=A_Wins;  
+    } 
+    else if(!GameArray.includes(0)){alert("Draw!!!");ResetBoard();A_Array=[];B_Array=[]}
     }
   }
   else if(player=="playerB"){
       for(var j=0;j<Win_Array.length;j++){
-      if(Win_Array[j].every(SelectedIndexes => B_Array.includes(SelectedIndexes))){ alert("Plyer B Won");Reset();A_Array=[];B_Array=[]}
-      else if(!GameArray.includes(0)){alert("Draw!!!");Reset();A_Array=[];B_Array=[]}
+      if(Win_Array[j].every(SelectedIndexes => B_Array.includes(SelectedIndexes))){ alert("Plyer B Won");ResetBoard();A_Array=[];B_Array=[];
+      B_Wins++;
+      document.getElementById("B_Wins").innerText=B_Wins;
+      }
+      else if(!GameArray.includes(0)){alert("Draw!!!");ResetBoard();A_Array=[];B_Array=[]}
       }  
   }
   
